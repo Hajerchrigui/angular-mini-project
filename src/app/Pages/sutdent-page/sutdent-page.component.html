@@ -1,0 +1,46 @@
+<div>
+      <h1> Students page</h1>  
+      <div class="mt-5 container">
+        <div class ="card-header">
+            <h4>
+                Students lists
+               <a href="/students/create" class="btn btn-primary float-end"> Add student</a>
+            </h4>
+        </div> 
+        <div class="card-body">
+            <div *ngIf ="isLoading; else elseForm">
+              <app-loader :title ="loadingTitle"/>
+            </div>
+        </div>
+      <ng-template #elseForm>
+        <div class ="card-body">
+           <table class="table tab-striped table-bordered">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cours</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let student of this.students">
+                    <td>{{<student.id}}</td>
+                    <td>{{<student.name}}</td>
+                    <td>{{<student.cours}}</td>
+                    <td>{{<student.email}}</td>
+                    <td>{{<student.phone}}</td>
+                    <td>{{<student.created_at}}</td>
+                    <td>{{<student.updated_at}}</td>
+                    <td>
+                        <a routerLink="/" class="btn btn-success">Edit</a>
+                        <button type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+           </table>
+        </div>
+        </ng-template>
+      </div>
+</div>
